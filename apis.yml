@@ -38,7 +38,7 @@ apis:
         url: https://help.sap.com/docs/leanix/ea
       - type: OpenAPI
         url: >-
-          https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/leanix-openapi.json
+          https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json
 common:
   - type: Website
     url: https://www.leanix.net

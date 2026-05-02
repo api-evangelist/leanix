@@ -19,7 +19,7 @@ LeanIX (now SAP LeanIX) is an enterprise architecture and SaaS management platfo
 The LeanIX Integration API exposes a generic interface for inbound and outbound data synchronization with the LeanIX workspace. It supports processor configurations, starter and advanced examples, and managing synchronization runs that move fact sheet data in and out of LeanIX.
 
 - [Documentation](https://help.sap.com/docs/leanix/ea)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/leanix-openapi.json)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json)
 
 ## Timestamps
 
