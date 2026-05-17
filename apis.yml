@@ -44,7 +44,7 @@ common:
     url: https://www.leanix.net
   - type: Documentation
     url: https://help.sap.com/docs/leanix/ea
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/leanix
 maintainers:
   - FN: Kin Lane
