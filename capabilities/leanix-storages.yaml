@@ -1,0 +1,69 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Integration API — storages
+  description: 'Integration API — storages. 1 operations. Lead operation: storages. Self-contained Naftiko capability covering
+    one Leanix business surface.'
+  tags:
+  - Leanix
+  - storages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LEANIX_API_KEY: LEANIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: leanix-storages
+    baseUri: ''
+    description: Integration API — storages business capability. Self-contained, no shared references.
+    resources:
+    - name: storages-azure
+      path: /storages/azure
+      operations:
+      - name: createinazure
+        method: GET
+        description: Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure
+          Storage.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: leanix-storages-rest
+    port: 8080
+    description: REST adapter for Integration API — storages. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/storages/azure
+      name: storages-azure
+      description: REST surface for storages-azure.
+      operations:
+      - method: GET
+        name: createinazure
+        description: Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure
+          Storage.
+        call: leanix-storages.createinazure
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: leanix-storages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Integration API — storages. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: provides-storage-resources-that-can
+      description: Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure Storage.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: leanix-storages.createinazure
+      outputParameters:
+      - type: object
+        mapping: $.
