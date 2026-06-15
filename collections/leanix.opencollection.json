@@ -1,0 +1,536 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Integration API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "examples",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /examples/starterExample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/examples/starterExample"
+          },
+          "docs": "Returns a starter example including an Input object and processor configuration"
+        },
+        {
+          "info": {
+            "name": "GET /examples/advancedExample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/examples/advancedExample"
+          },
+          "docs": "Returns an advanced example including an Input object and processor configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getProcessorConfigurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/configurations",
+            "params": [
+              {
+                "name": "connectorType",
+                "value": "",
+                "type": "query",
+                "description": "The type of connector that is used"
+              },
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the connector instance"
+              },
+              {
+                "name": "connectorVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the connector that is expected to process this LDIF file"
+              },
+              {
+                "name": "processingDirection",
+                "value": "",
+                "type": "query",
+                "description": "The data flow direction, could be [inbound, outbound]"
+              },
+              {
+                "name": "processingMode",
+                "value": "",
+                "type": "query",
+                "description": "The processing mode, could be [partial, full]"
+              }
+            ]
+          },
+          "docs": "Returns a list of available processor configurations"
+        },
+        {
+          "info": {
+            "name": "upsertProcessorConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/configurations"
+          },
+          "docs": "Inserts a new processor configuration or updates an existing one"
+        },
+        {
+          "info": {
+            "name": "deleteProcessorConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/configurations",
+            "params": [
+              {
+                "name": "connectorType",
+                "value": "",
+                "type": "query",
+                "description": "The type of connector that is used"
+              },
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the connector instance"
+              },
+              {
+                "name": "connectorVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the connector that is expected to process this LDIF file"
+              },
+              {
+                "name": "processingDirection",
+                "value": "",
+                "type": "query",
+                "description": "The data flow direction, could be [inbound, outbound]"
+              },
+              {
+                "name": "processingMode",
+                "value": "",
+                "type": "query",
+                "description": "The processing mode, could be [partial, full]"
+              }
+            ]
+          },
+          "docs": "Delete a single processor configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "synchronizationRuns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getSynchronizationRunsStatusList",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns"
+          },
+          "docs": "Returns the status of all existing synchronization runs"
+        },
+        {
+          "info": {
+            "name": "createSynchronizationRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "If true the created run will be enqueued to be started"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+              }
+            ]
+          },
+          "docs": "Creates a synchronization run."
+        },
+        {
+          "info": {
+            "name": "startSynchronizationRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed"
+              }
+            ]
+          },
+          "docs": "Starts an existing but not yet started synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunProgress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/progress",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Shows the progress of a synchronization run, it gives updated counters of the run level that is in execution."
+        },
+        {
+          "info": {
+            "name": "stopSynchronizationRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Stops a running synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Returns the status of an existing synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunStats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Returns detailed statistics about the execution of a synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunResults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/results",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Returns the results of a finished synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunResultsUrl",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/resultsUrl",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Returns the url to the results of a finished synchronization run"
+        },
+        {
+          "info": {
+            "name": "getSynchronizationRunWarnings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/synchronizationRuns/:id/warnings",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The zero-based index of the first element to retrieve"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of elements that should be retrieved"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the synchronization run"
+              }
+            ]
+          },
+          "docs": "Returns the warnings of a synchronization run"
+        },
+        {
+          "info": {
+            "name": "createSynchronizationRunWithConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/withConfig",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "If true the created run will be enqueued to be started"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+              }
+            ]
+          },
+          "docs": "Starts a new synchronization run using the processor configuration and input object provided in the request.\n>__Please do not use this endpoint for production use cases. It was built for testing configurations only.__"
+        },
+        {
+          "info": {
+            "name": "createSynchronizationRunWithUrlInput",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/withUrlInput",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "If true the created run will be enqueued to be started"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+              }
+            ]
+          },
+          "docs": "Starts a new synchronization run using a DataProvider information to obtain the LDIF input"
+        },
+        {
+          "info": {
+            "name": "createSynchronizationRunWithExecutionGroupAndUrlInput",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/withExecutionGroupAndUrlInput",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "query",
+                "description": "The name of execution group"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "If true the created run will be enqueued to be started"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+              }
+            ]
+          },
+          "docs": "Starts a new synchronization run using a DataProvider information to obtain the LDIF input, but choose a configuration based on execution group."
+        },
+        {
+          "info": {
+            "name": "createSynchronizationRunWithExecutionGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/synchronizationRuns/withExecutionGroup",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "query",
+                "description": "The name of execution group"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "If true the created run will be enqueued to be started"
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+              }
+            ]
+          },
+          "docs": "Starts a new synchronization run using combined processor configuration within an execution group and input object provided in the request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "fastSynchronizationRuns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createSynchronizationFastRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fastSynchronizationRuns",
+            "params": [
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed"
+              }
+            ]
+          },
+          "docs": "Creates a fast synchronization run."
+        },
+        {
+          "info": {
+            "name": "createSynchronizationFastRunWithConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fastSynchronizationRuns/withConfig",
+            "params": [
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed"
+              }
+            ]
+          },
+          "docs": "Starts a new fast run synchronization using the processor configuration and input object provided in the request.\n>__Please do not use this endpoint for production use cases. It was built for testing configurations only.__"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "storages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createInAzure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/storages/azure"
+          },
+          "docs": "Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure Storage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
