@@ -36,6 +36,12 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/leanix-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/leanix-domain-security.yml
+  - type: Authentication
+    url: authentication/leanix-authentication.yml
   - type: OAuthScopes
     url: scopes/leanix-scopes.yml
   - type: LinkedIn

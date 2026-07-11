@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/leanix-openapi.json
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: token
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+    scopes: 0
+  sources:
+  - openapi/leanix-openapi.json
