@@ -36,6 +36,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json
 common:
+  - type: OAuthScopes
+    url: scopes/leanix-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/leanix
   - type: Website
@@ -44,6 +46,8 @@ common:
     url: https://help.sap.com/docs/leanix/ea
   - type: GitHubOrganization
     url: https://github.com/leanix
+  - url: https://www.leanix.net/en/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

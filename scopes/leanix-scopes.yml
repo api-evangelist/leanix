@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/leanix-openapi.json
+docs: https://help.sap.com/docs/leanix/ea/authentication-to-sap-leanix-services
+note: >-
+  SAP LeanIX OAuth 2.0 does not use published scopes; the client_credentials
+  token response returns an empty scope value and access is governed by the
+  permission role (Admin, Member, Viewer) of the technical user or API token
+  encoded in the JWT
+  (https://help.sap.com/docs/leanix/ea/authentication-to-sap-leanix-services).
+schemes:
+- name: token
+  source: openapi/leanix-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+scopes: []
