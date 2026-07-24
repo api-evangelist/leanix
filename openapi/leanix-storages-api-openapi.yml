@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Integration configurations storages API
+basePath: /services/integration-api/v1
+schemes:
+- https
+security:
+- token: []
+tags:
+- name: storages
+paths:
+  /storages/azure:
+    get:
+      description: Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure Storage.
+      tags:
+      - storages
+      operationId: createInAzure
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: A new blob file was created and its ready for writing in Azure Blob Storage.
+          schema:
+            $ref: '#/definitions/StorageManagerResponse'
+        '500':
+          description: Internal error during the provisioning of a new blob file.
+definitions:
+  StorageManagerResponse:
+    type: object
+    required:
+    - expireAt
+    - SAS
+    properties:
+      expireAt:
+        description: The date until the SAS url for the new blob file is valid.
+        example: '2021-04-10T13:08:53.939604Z'
+        type: string
+      SAS:
+        description: The Shared Accesss Signature (SAS)
+        example: https://folder.blob.core.windows.net/integration-api/Pa840823
+        type: string
+securityDefinitions:
+  token:
+    type: oauth2
+    tokenUrl: /services/mtm/v1/oauth2/token
+    flow: application

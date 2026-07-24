@@ -1,0 +1,237 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Integration configurations fastSynchronizationRuns API
+basePath: /services/integration-api/v1
+schemes:
+- https
+security:
+- token: []
+tags:
+- name: fastSynchronizationRuns
+paths:
+  /fastSynchronizationRuns:
+    post:
+      description: Creates a fast synchronization run.
+      tags:
+      - fastSynchronizationRuns
+      operationId: createSynchronizationFastRun
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/test'
+      - in: body
+        name: body
+        required: false
+        schema:
+          $ref: '#/definitions/Input'
+      responses:
+        '200':
+          description: Results of the execution, it includes error messages and statistics about the run.
+          schema:
+            $ref: '#/definitions/FastRunResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '400':
+          description: Fast execution does not support outbound yet.
+  /fastSynchronizationRuns/withConfig:
+    post:
+      description: 'Starts a new fast run synchronization using the processor configuration and input object provided in the request.
+
+        >__Please do not use this endpoint for production use cases. It was built for testing configurations only.__'
+      tags:
+      - fastSynchronizationRuns
+      operationId: createSynchronizationFastRunWithConfig
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/test'
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/InputWithProcessorConfig'
+      responses:
+        '200':
+          description: Results of the execution, it includes error messages and statistics about the run.
+          schema:
+            $ref: '#/definitions/FastRunResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '400':
+          description: Fast execution does not support outbound yet.
+definitions:
+  FastRunStatsReport:
+    type: object
+    properties:
+      duration:
+        description: The duration of the execution expressed in ISO-8601 format PnDTnHnMn
+        readOnly: true
+        type: string
+      processedContentCount:
+        description: The number of elements processed as given by the LDIF input content
+        readOnly: true
+        type: integer
+      processorCount:
+        description: The number or processors that were part of the execution
+        readOnly: true
+        type: integer
+  Warning:
+    type: object
+    properties:
+      processor:
+        description: The error message
+        readOnly: true
+        type: object
+        $ref: '#/definitions/Processor'
+      content:
+        description: The content ID element from the LDIF that was processed when this warning was generated.
+        readOnly: true
+        type: string
+      message:
+        description: The error message
+        readOnly: true
+        type: string
+      detail:
+        description: Additional information to complement the error message
+        readOnly: true
+        type: string
+      category:
+        description: An internal category that identifies of processing category where the warning was originated.
+        readOnly: true
+        type: string
+      status:
+        description: An identifier of the type of alert. Possible values are WARNING, ERROR
+        readOnly: true
+        type: string
+  Input:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+  Processor:
+    type: object
+    properties:
+      name:
+        description: The name of the processor as defined by the processor configuration
+        readOnly: true
+        type: string
+      index:
+        description: An internal integer value used to identify the processor
+        readOnly: true
+        type: integer
+  FastRunResponse:
+    type: object
+    properties:
+      status:
+        description: The status result of the run, like FINISHED, FAILED.
+        readOnly: true
+        type: string
+      warnings:
+        description: A list of error/warnings messages found during the execution.
+        type: array
+        readOnly: true
+        items:
+          $ref: '#/definitions/Warning'
+      stats:
+        description: Statistics about the execution of the run.
+        readOnly: true
+        type: object
+        $ref: '#/definitions/FastRunStatsReport'
+      results:
+        description: Output ldif when writeToLdif processor is used.
+        readOnly: true
+        type: object
+  InputWithProcessorConfig:
+    type: object
+    required:
+    - input
+    - processorConfiguration
+    properties:
+      input:
+        description: The input that is processed
+        readOnly: true
+        $ref: '#/definitions/Input'
+      processorConfiguration:
+        description: The processors and variables that are required to process the input
+        readOnly: true
+        $ref: '#/definitions/ProcessorConfiguration'
+  ProcessorConfiguration:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+      sequentialExecution:
+        description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
+        type: boolean
+        default: false
+parameters:
+  test:
+    name: test
+    description: If true a dry run without any changes will be performed
+    in: query
+    required: false
+    type: boolean
+    default: false
+securityDefinitions:
+  token:
+    type: oauth2
+    tokenUrl: /services/mtm/v1/oauth2/token
+    flow: application

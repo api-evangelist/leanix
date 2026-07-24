@@ -1,0 +1,126 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Integration configurations examples API
+basePath: /services/integration-api/v1
+schemes:
+- https
+security:
+- token: []
+tags:
+- name: examples
+paths:
+  /examples/starterExample:
+    get:
+      description: Returns a starter example including an Input object and processor configuration
+      tags:
+      - examples
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Returns a complete input example with processor configurations
+          schema:
+            $ref: '#/definitions/InputWithProcessorConfig'
+  /examples/advancedExample:
+    get:
+      description: Returns an advanced example including an Input object and processor configuration
+      tags:
+      - examples
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Returns a complete input example with processor configurations
+          schema:
+            $ref: '#/definitions/InputWithProcessorConfig'
+definitions:
+  ProcessorConfiguration:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+      sequentialExecution:
+        description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
+        type: boolean
+        default: false
+  Input:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+  InputWithProcessorConfig:
+    type: object
+    required:
+    - input
+    - processorConfiguration
+    properties:
+      input:
+        description: The input that is processed
+        readOnly: true
+        $ref: '#/definitions/Input'
+      processorConfiguration:
+        description: The processors and variables that are required to process the input
+        readOnly: true
+        $ref: '#/definitions/ProcessorConfiguration'
+securityDefinitions:
+  token:
+    type: oauth2
+    tokenUrl: /services/mtm/v1/oauth2/token
+    flow: application

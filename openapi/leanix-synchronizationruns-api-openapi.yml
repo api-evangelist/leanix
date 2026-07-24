@@ -1,0 +1,829 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Integration configurations synchronizationRuns API
+basePath: /services/integration-api/v1
+schemes:
+- https
+security:
+- token: []
+tags:
+- name: synchronizationRuns
+paths:
+  /synchronizationRuns:
+    get:
+      description: Returns the status of all existing synchronization runs
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunsStatusList
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: A list containing current status of all available synchronization runs
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StatusResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+    post:
+      description: Creates a synchronization run.
+      tags:
+      - synchronizationRuns
+      operationId: createSynchronizationRun
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/start'
+      - $ref: '#/parameters/testWithStart'
+      - in: body
+        name: body
+        required: false
+        schema:
+          $ref: '#/definitions/Input'
+      responses:
+        '200':
+          description: Returns the ID of the new synchronization run.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StatusResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+  /synchronizationRuns/{id}/start:
+    post:
+      description: Starts an existing but not yet started synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: startSynchronizationRun
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      - $ref: '#/parameters/test'
+      responses:
+        '200':
+          description: The synchronization run was successfully started and is now in progress
+        '400':
+          description: The synchronization run was already started earlier. It is not possible to start the same synchronization run twice.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /synchronizationRuns/{id}/progress:
+    get:
+      description: Shows the progress of a synchronization run, it gives updated counters of the run level that is in execution.
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunProgress
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: The synchronization run exists and progress information was searched.
+          schema:
+            $ref: '#/definitions/SyncRunInboundProgressReport'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+  /synchronizationRuns/{id}/stop:
+    post:
+      description: Stops a running synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: stopSynchronizationRun
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: The synchronization run was successfully stopped.
+        '400':
+          description: The synchronization is not yet pending or running. It is not possible to stop a synchronization that is not pending or running.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /synchronizationRuns/{id}/status:
+    get:
+      description: Returns the status of an existing synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunStatus
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: Returns the status of an existing synchronization run.
+          schema:
+            $ref: '#/definitions/StatusResponse'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+          schema:
+            $ref: '#/definitions/Warning'
+  /synchronizationRuns/{id}/stats:
+    get:
+      description: Returns detailed statistics about the execution of a synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunStats
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: Returns an object with multiple entries based on the direction (inbound or outbound) of the synchronization run
+          schema:
+            type: object
+          examples:
+            inbound:
+              statusChanges:
+              - status: CREATED
+                timestamp: '2020-10-27T15:42:52.645115Z'
+              - status: PENDING
+                timestamp: '2020-10-27T15:42:52.737683Z'
+              - status: IN_PROGRESS
+                timestamp: '2020-10-27T15:42:55.896493Z'
+              - status: FINISHED
+                timestamp: '2020-10-27T15:42:58.278413Z'
+              processorStatistics:
+              - processorIndex: 0
+                processorName: Apps from Deployments
+                processingTotalDuration: PT0.067352728S
+                processingNetworkDuration: PT0.048198277S
+                processedContentCount: 2
+                graphQLRequestCount: 2
+                errorCount: 0
+              - processorIndex: 1
+                processorName: ITComponent from Cluster
+                processingTotalDuration: PT0.137036974S
+                processingNetworkDuration: PT0.131972034S
+                processedContentCount: 1
+                graphQLRequestCount: 2
+                errorCount: 0
+              - processorIndex: 2
+                processorName: Rel from Apps to ITComponent
+                processingTotalDuration: PT0.042523432S
+                processingNetworkDuration: PT0.040348016S
+                processedContentCount: 2
+                graphQLRequestCount: 2
+                errorCount: 0
+              singleRunLevelStatistics:
+              - singleRunIndex: 0
+                totalTime: PT0.409781311S
+                prefetchTime: PT0.000326503S
+                processTime: PT0.405353676S
+                processedContentCount: 3
+                errorCount: 0
+              - singleRunIndex: 1
+                totalTime: PT0.09956918S
+                prefetchTime: PT0.0000753S
+                processTime: PT0.095250747S
+                processedContentCount: 2
+                errorCount: 0
+              deletedObjects: []
+              totalBlockingTime: PT1S
+            outbound:
+              statusChanges:
+              - status: CREATED
+                timestamp: '2020-10-27T15:43:55.820906Z'
+              - status: PENDING
+                timestamp: '2020-10-27T15:43:55.902542Z'
+              - status: IN_PROGRESS
+                timestamp: '2020-10-27T15:44:00.855281Z'
+              - status: FINISHED
+                timestamp: '2020-10-27T15:44:01.791416Z'
+              processorStatistics:
+              - processorIndex: 0
+                processorName: Export to LDIF
+                networkDuration: PT0.071077757S
+                processingDuration: PT0.02168897S
+                itemsInScopeCount: 2
+                processedContentCount: 2
+                errorCount: 0
+              totalBlockingTime: PT0S
+        '403':
+          description: The user is not allowed to use this endpoint.
+  /synchronizationRuns/{id}/results:
+    get:
+      description: Returns the results of a finished synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunResults
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: Returns the results of a finished synchronization run.
+          schema:
+            $ref: '#/definitions/LeanIxDataInterchangeFormat'
+        '204':
+          description: This code is returned, when the inbound run has no LDIF to produce, or when the LDIF is not yet ready.
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /synchronizationRuns/{id}/resultsUrl:
+    get:
+      description: Returns the url to the results of a finished synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunResultsUrl
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: Returns the url to the results of a finished synchronization run or in case the run exists but is not yet finished a null value for the url.
+          schema:
+            $ref: '#/definitions/UrlContainer'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No synchronization run with the given id exists.
+          schema:
+            $ref: '#/definitions/Warning'
+  /synchronizationRuns/{id}/warnings:
+    get:
+      description: Returns the warnings of a synchronization run
+      tags:
+      - synchronizationRuns
+      operationId: getSynchronizationRunWarnings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: offset
+        type: integer
+        default: 0
+        minimum: 0
+        description: The zero-based index of the first element to retrieve
+      - in: query
+        name: limit
+        type: integer
+        default: 100
+        minimum: 1
+        maximum: 100
+        description: The number of elements that should be retrieved
+      - $ref: '#/parameters/syncRunId'
+      responses:
+        '200':
+          description: Returns the warnings of a synchronization run.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Warning'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '400':
+          description: The parameters offset and limit must satisfy the condition offset MOD limit == 0, or if the synchornisation does not have a SyncLog Id
+  /synchronizationRuns/withConfig:
+    post:
+      description: 'Starts a new synchronization run using the processor configuration and input object provided in the request.
+
+        >__Please do not use this endpoint for production use cases. It was built for testing configurations only.__'
+      tags:
+      - synchronizationRuns
+      operationId: createSynchronizationRunWithConfig
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/start'
+      - $ref: '#/parameters/testWithStart'
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/InputWithProcessorConfig'
+      responses:
+        '200':
+          description: Successful operation, the response contains the ID of the run.
+          schema:
+            $ref: '#/definitions/SynchronizationRun'
+        '403':
+          description: The user is not allowed to use this endpoint.
+  /synchronizationRuns/withUrlInput:
+    post:
+      description: Starts a new synchronization run using a DataProvider information to obtain the LDIF input
+      tags:
+      - synchronizationRuns
+      operationId: createSynchronizationRunWithUrlInput
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/start'
+      - $ref: '#/parameters/testWithStart'
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/DataProvider'
+      responses:
+        '200':
+          description: Successful operation, the response contains the ID of the run and the processor configuration selected for the run.
+          schema:
+            $ref: '#/definitions/SynchronizationRunWithConfiguration'
+        '403':
+          description: The user is not allowed to use this endpoint.
+  /synchronizationRuns/withExecutionGroupAndUrlInput:
+    post:
+      description: Starts a new synchronization run using a DataProvider information to obtain the LDIF input, but choose a configuration based on execution group.
+      tags:
+      - synchronizationRuns
+      operationId: createSynchronizationRunWithExecutionGroupAndUrlInput
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: groupName
+        type: string
+        description: The name of execution group
+      - $ref: '#/parameters/start'
+      - $ref: '#/parameters/testWithStart'
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/DataProvider'
+      responses:
+        '200':
+          description: Successful operation, the response contains the ID of the run and the processor configuration selected for the run.
+          schema:
+            $ref: '#/definitions/SynchronizationRunWithConfiguration'
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: There is no configuration matching with the execution group value
+  /synchronizationRuns/withExecutionGroup:
+    post:
+      description: Starts a new synchronization run using combined processor configuration within an execution group and input object provided in the request.
+      tags:
+      - synchronizationRuns
+      operationId: createSynchronizationRunWithExecutionGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: groupName
+        type: string
+        description: The name of execution group
+      - $ref: '#/parameters/start'
+      - $ref: '#/parameters/testWithStart'
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Input'
+      responses:
+        '200':
+          description: Successful operation, the response contains the ID of the run.
+          schema:
+            $ref: '#/definitions/SynchronizationRunWithConfiguration'
+        '400':
+          description: Execution group contains processor configurations that are incompatible (both 'processingDirection' and 'processingMode' must be the same).
+        '404':
+          description: No processor configuration is found for the given execution group.
+definitions:
+  SyncRunInboundProgressReport:
+    type: object
+    properties:
+      processedContentCount:
+        description: Number of elements processed from content in the current run level for Inbound processing.
+        type: integer
+        example: 4872
+      errorCount:
+        description: Number of errors in the current run level, valid for Inbound
+        type: integer
+      graphQLRequestCount:
+        description: Number of GraphQL request made to Pathfinder backend in the current run level, not applicable for Outbound
+        type: integer
+      runLevelIndex:
+        description: Identifier of the run level being executed, valid only for Inbound processing.
+        type: integer
+        example: 2
+      status:
+        description: Status of the synchronization Job
+        type: integer
+        example: IN_PROGRESS
+      contentsCount:
+        description: Number of elements build in the output content. Valid for Outbound
+        type: integer
+      warningsCount:
+        description: Number of warnings detected during Outbound processing
+        type: integer
+      itemsInScopeCount:
+        description: Number of elements found in the Outbound Scope or the Scope of the processors
+        type: integer
+  ProcessorConfiguration:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+      sequentialExecution:
+        description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
+        type: boolean
+        default: false
+  SynchronizationRunWithConfiguration:
+    type: object
+    properties:
+      id:
+        description: A unique ID to distinguish this LDIF instance from other LDIF instances
+        readOnly: true
+        type: string
+      processorConfiguration:
+        description: The processor configuration associated with this synchronization run
+        readOnly: true
+        type: object
+        $ref: '#/definitions/ProcessorConfiguration'
+  LeanIxDataInterchangeFormat:
+    description: Represents a LeanIX Data Interchange Format (LDIF)
+    allOf:
+    - $ref: '#/definitions/Input'
+    - type: object
+      required:
+      - connectorType
+      - connectorId
+      - connectorVersion
+      - lxVersion
+      - processingDirection
+      properties:
+        connectorType:
+          description: The type of connector that is used
+          example: lxKubernetes
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 500
+        connectorId:
+          description: The identifier of the connector instance
+          example: Kub Dev-001
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 500
+        connectorVersion:
+          description: The version of the connector that is expected to process this LDIF file
+          example: 1.2.0
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 500
+        lxVersion:
+          description: The target API version
+          example: 1.0.0
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 500
+        lxWorkspace:
+          description: The optional target workspace
+          type: string
+          readOnly: true
+        description:
+          description: A customer added, arbitrary description for any kind of grouping, notification or note purpose
+          example: Imports kubernetes data into LeanIX
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 500
+        processingDirection:
+          description: The direction of the data flow
+          type: string
+        processingMode:
+          description: Optional additional options to parse this LDIF request
+          type: string
+          default: partial
+          readOnly: true
+          enum:
+          - partial
+          - full
+        chunkInformation:
+          description: Optional information on the number of entries in this LDIF chunk. By default the LDIF is processed without the usage of chunks.
+          readOnly: true
+          $ref: '#/definitions/ChunkInformation'
+        customFields:
+          description: Global variables accessible from all data processors.
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: object
+        content:
+          description: The list of content changes that are applied within this LDIF
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/definitions/Content'
+  UrlContainer:
+    type: object
+    description: Represent a container for the Url where the results can be downloaded.
+    required:
+    - url
+    properties:
+      url:
+        description: URL for the content generated by a Synchronisation Run
+        readOnly: true
+        type: string
+  Processor:
+    type: object
+    properties:
+      name:
+        description: The name of the processor as defined by the processor configuration
+        readOnly: true
+        type: string
+      index:
+        description: An internal integer value used to identify the processor
+        readOnly: true
+        type: integer
+  InputWithProcessorConfig:
+    type: object
+    required:
+    - input
+    - processorConfiguration
+    properties:
+      input:
+        description: The input that is processed
+        readOnly: true
+        $ref: '#/definitions/Input'
+      processorConfiguration:
+        description: The processors and variables that are required to process the input
+        readOnly: true
+        $ref: '#/definitions/ProcessorConfiguration'
+  SynchronizationRun:
+    type: object
+    properties:
+      id:
+        description: A unique ID to distinguish this LDIF instance from other LDIF instances
+        readOnly: true
+        type: string
+  ErrorResponse:
+    type: object
+    description: Error response with details in a list
+    required:
+    - errors
+    properties:
+      errors:
+        description: A list of error details
+        readOnly: true
+        type: array
+        items:
+          type: string
+  DataProvider:
+    description: Definition of the provider which provides the inbound LDIF
+    type: object
+    properties:
+      url:
+        description: The url from which the inbound LDIF should be downloaded from
+        type: string
+        readOnly: true
+      type:
+        description: The type of storage provider. Use 'azureStorage' to optimize for Azure Storage, or null for other types.
+        type: string
+        readOnly: true
+    example:
+      url: https://...
+      type: azureStorage
+  Warning:
+    type: object
+    properties:
+      processor:
+        description: The error message
+        readOnly: true
+        type: object
+        $ref: '#/definitions/Processor'
+      content:
+        description: The content ID element from the LDIF that was processed when this warning was generated.
+        readOnly: true
+        type: string
+      message:
+        description: The error message
+        readOnly: true
+        type: string
+      detail:
+        description: Additional information to complement the error message
+        readOnly: true
+        type: string
+      category:
+        description: An internal category that identifies of processing category where the warning was originated.
+        readOnly: true
+        type: string
+      status:
+        description: An identifier of the type of alert. Possible values are WARNING, ERROR
+        readOnly: true
+        type: string
+  StatusResponse:
+    type: object
+    required:
+    - id
+    properties:
+      id:
+        description: The ID of the synchronization run
+        readOnly: true
+        type: string
+      status:
+        description: The status of the synchronization run
+        type: string
+        readOnly: true
+        enum:
+        - CREATED
+        - SEQUENTIALIZED
+        - PENDING
+        - IN_PROGRESS
+        - FINISHED
+        - STOPPED
+        - FAILED
+      description:
+        description: The optional description that was provided as part of the Input object.
+        readOnly: true
+        type: string
+  Input:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+  Content:
+    description: An object containing all necessary information about changes that are going to be made by the processors
+    type: object
+    required:
+    - type
+    - id
+    - data
+    properties:
+      type:
+        description: The type of content defined by this entry
+        example: Deployment
+        type: string
+        readOnly: true
+      id:
+        description: The (External) ID that identifies the fact sheet
+        example: 684c16bf-198c-11f9-9d08-926300573fbf
+        type: string
+        readOnly: true
+      data:
+        description: Processor specific fields that correspond to changes
+        example:
+          app: chartmuseum
+          chart: chartmuseum-1.8.4
+          heritage: Tiller
+          name: chartmuseum-chartmuseum
+          release: chartmuseum
+          clusterName: leanix-westeurope-int-aks
+        type: object
+        readOnly: true
+        additionalProperties:
+          type: object
+  ChunkInformation:
+    type: object
+    properties:
+      firstDataObject:
+        description: Index of the first data object in this chunk
+        type: integer
+        format: int64
+        readOnly: true
+        minimum: 0
+      lastDataObject:
+        description: Index of the last data object in this chunk
+        type: integer
+        format: int64
+        readOnly: true
+        minimum: 0
+      maxDataObject:
+        description: Index of the last data object over all chunks
+        type: integer
+        format: int64
+        readOnly: true
+        minimum: 0
+parameters:
+  test:
+    name: test
+    description: If true a dry run without any changes will be performed
+    in: query
+    required: false
+    type: boolean
+    default: false
+  start:
+    name: start
+    description: If true the created run will be enqueued to be started
+    in: query
+    required: false
+    type: boolean
+    default: false
+  testWithStart:
+    name: test
+    description: If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well
+    in: query
+    required: false
+    type: boolean
+    default: false
+  syncRunId:
+    name: id
+    description: The ID of the synchronization run
+    in: path
+    required: true
+    type: string
+securityDefinitions:
+  token:
+    type: oauth2
+    tokenUrl: /services/mtm/v1/oauth2/token
+    flow: application

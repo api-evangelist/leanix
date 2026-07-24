@@ -1,0 +1,161 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Integration configurations API
+basePath: /services/integration-api/v1
+schemes:
+- https
+security:
+- token: []
+tags:
+- name: configurations
+paths:
+  /configurations:
+    get:
+      description: Returns a list of available processor configurations
+      tags:
+      - configurations
+      operationId: getProcessorConfigurations
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/connectorType'
+      - $ref: '#/parameters/connectorId'
+      - $ref: '#/parameters/connectorVersion'
+      - $ref: '#/parameters/processingDirection'
+      - $ref: '#/parameters/processingMode'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            $ref: '#/definitions/ProcessorConfiguration'
+        '403':
+          description: The user is not allowed to use this endpoint.
+    put:
+      description: Inserts a new processor configuration or updates an existing one
+      tags:
+      - configurations
+      operationId: upsertProcessorConfiguration
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: false
+        schema:
+          $ref: '#/definitions/ProcessorConfiguration'
+      responses:
+        '204':
+          description: Upsert successful.
+        '403':
+          description: The user is not allowed to use this endpoint.
+    delete:
+      description: Delete a single processor configuration
+      tags:
+      - configurations
+      operationId: deleteProcessorConfiguration
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - $ref: '#/parameters/connectorType'
+      - $ref: '#/parameters/connectorId'
+      - $ref: '#/parameters/connectorVersion'
+      - $ref: '#/parameters/processingDirection'
+      - $ref: '#/parameters/processingMode'
+      responses:
+        default:
+          description: successful operation
+        '400':
+          description: Not all necessary fields are set in parameters.
+        '403':
+          description: The user is not allowed to use this endpoint.
+        '404':
+          description: No such processor configuration found.
+        '422':
+          description: Could not process the given processor configuration.
+definitions:
+  ProcessorConfiguration:
+    type: object
+    discriminator: processingDirection
+    required:
+    - connectorType
+    - connectorId
+    - connectorVersion
+    - processingDirection
+    properties:
+      connectorType:
+        description: The type of connector that is used
+        example: lxKubernetes
+        type: string
+      connectorId:
+        description: The identifier of the connector instance
+        example: Kub Dev-001
+        type: string
+      connectorVersion:
+        description: The version of the connector that is expected to process this LDIF file
+        example: 1.2.0
+        type: string
+      processingDirection:
+        description: The data flow direction, could be [inbound, outbound]
+        type: string
+        example: inbound
+      processingMode:
+        description: The processing mode, could be [partial, full]
+        type: string
+        default: partial
+        enum:
+        - partial
+        - full
+      sequentialExecution:
+        description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
+        type: boolean
+        default: false
+parameters:
+  connectorId:
+    name: connectorId
+    description: The identifier of the connector instance
+    in: query
+    required: false
+    type: string
+  connectorType:
+    name: connectorType
+    description: The type of connector that is used
+    in: query
+    required: false
+    type: string
+  processingMode:
+    name: processingMode
+    description: The processing mode, could be [partial, full]
+    in: query
+    required: false
+    type: string
+    enum:
+    - partial
+    - full
+  connectorVersion:
+    name: connectorVersion
+    description: The version of the connector that is expected to process this LDIF file
+    in: query
+    required: false
+    type: string
+  processingDirection:
+    name: processingDirection
+    description: The data flow direction, could be [inbound, outbound]
+    in: query
+    required: false
+    type: string
+    enum:
+    - inbound
+    - outbound
+securityDefinitions:
+  token:
+    type: oauth2
+    tokenUrl: /services/mtm/v1/oauth2/token
+    flow: application
