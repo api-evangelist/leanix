@@ -6,7 +6,20 @@ description: >-
   for integrating with the fact sheet inventory, running inbound and outbound synchronizations, and managing workspace
   data.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/leanix.png
 tags:
   - Enterprise Architecture
   - SaaS Management
@@ -18,23 +31,67 @@ created: '2026-03-27'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: leanix:integration-api
-    name: LeanIX Integration API
-    description: >-
-      The LeanIX Integration API exposes a generic interface for inbound and outbound data synchronization with the
-      LeanIX workspace. It supports processor configurations, starter and advanced examples, and managing
-      synchronization runs that move fact sheet data in and out of LeanIX.
-    humanURL: https://help.sap.com/docs/leanix/ea
-    baseURL: https://app.leanix.net/services/integration-api/v1
-    tags:
-      - Integration
-      - Synchronization
-      - Enterprise Architecture
-    properties:
-      - type: Documentation
-        url: https://help.sap.com/docs/leanix/ea
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json
+- aid: leanix:leanix-configurations-api
+  name: LeanIX configurations API
+  description: The configurations API from LeanIX — 1 operation(s) for configurations.
+  humanURL: https://help.sap.com/docs/leanix/ea
+  baseURL: https://app.leanix.net/services/integration-api/v1
+  tags:
+  - configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/leanix-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://help.sap.com/docs/leanix/ea
+- aid: leanix:leanix-examples-api
+  name: LeanIX examples API
+  description: The examples API from LeanIX — 2 operation(s) for examples.
+  humanURL: https://help.sap.com/docs/leanix/ea
+  baseURL: https://app.leanix.net/services/integration-api/v1
+  tags:
+  - examples
+  properties:
+  - type: OpenAPI
+    url: openapi/leanix-examples-api-openapi.yml
+  - type: Documentation
+    url: https://help.sap.com/docs/leanix/ea
+- aid: leanix:leanix-fastsynchronizationruns-api
+  name: LeanIX fastSynchronizationRuns API
+  description: >-
+    The fastSynchronizationRuns API from LeanIX — 2 operation(s) for fastsynchronizationruns.
+  humanURL: https://help.sap.com/docs/leanix/ea
+  baseURL: https://app.leanix.net/services/integration-api/v1
+  tags:
+  - fastSynchronizationRuns
+  properties:
+  - type: OpenAPI
+    url: openapi/leanix-fastsynchronizationruns-api-openapi.yml
+  - type: Documentation
+    url: https://help.sap.com/docs/leanix/ea
+- aid: leanix:leanix-storages-api
+  name: LeanIX storages API
+  description: The storages API from LeanIX — 1 operation(s) for storages.
+  humanURL: https://help.sap.com/docs/leanix/ea
+  baseURL: https://app.leanix.net/services/integration-api/v1
+  tags:
+  - storages
+  properties:
+  - type: OpenAPI
+    url: openapi/leanix-storages-api-openapi.yml
+  - type: Documentation
+    url: https://help.sap.com/docs/leanix/ea
+- aid: leanix:leanix-synchronizationruns-api
+  name: LeanIX synchronizationRuns API
+  description: The synchronizationRuns API from LeanIX — 13 operation(s) for synchronizationruns.
+  humanURL: https://help.sap.com/docs/leanix/ea
+  baseURL: https://app.leanix.net/services/integration-api/v1
+  tags:
+  - synchronizationRuns
+  properties:
+  - type: OpenAPI
+    url: openapi/leanix-synchronizationruns-api-openapi.yml
+  - type: Documentation
+    url: https://help.sap.com/docs/leanix/ea
 common:
   - type: AgenticAccess
     url: agentic-access/leanix-agentic-access.yml
