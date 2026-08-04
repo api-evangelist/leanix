@@ -1,0 +1,22 @@
+{
+  "provider": "leanix",
+  "sources": [
+    "leanix-configurations-api-openapi.yml",
+    "leanix-examples-api-openapi.yml",
+    "leanix-fastsynchronizationruns-api-openapi.yml",
+    "leanix-storages-api-openapi.yml",
+    "leanix-synchronizationruns-api-openapi.yml"
+  ],
+  "outputs": [
+    "leanix-configurations-api-openapi.yml",
+    "leanix-examples-api-openapi.yml",
+    "leanix-fastsynchronizationruns-api-openapi.yml",
+    "leanix-storages-api-openapi.yml",
+    "leanix-synchronizationruns-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
