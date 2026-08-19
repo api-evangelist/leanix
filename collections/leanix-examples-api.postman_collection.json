@@ -1,0 +1,205 @@
+{
+  "item": [
+    {
+      "id": "0dab3265-f5a0-4d41-af5e-0e0cd4b4f835",
+      "name": "examples",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f57f8ce-5ba6-42bf-bf8f-0d7171993819",
+          "name": "Returns a starter example including an Input object and processor configuration",
+          "request": {
+            "name": "Returns a starter example including an Input object and processor configuration",
+            "description": {
+              "content": "Returns a starter example including an Input object and processor configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "examples",
+                "starterExample"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aea1e8e8-2c76-4572-9cc6-0cc2f21e9d2b",
+              "name": "Returns a complete input example with processor configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "examples",
+                    "starterExample"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f8c1ce4-7632-49a0-b234-631eb04f0b5b",
+          "name": "Returns an advanced example including an Input object and processor configuration",
+          "request": {
+            "name": "Returns an advanced example including an Input object and processor configuration",
+            "description": {
+              "content": "Returns an advanced example including an Input object and processor configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "examples",
+                "advancedExample"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89ced47b-561a-4a0f-b7c7-500cc7fecc58",
+              "name": "Returns a complete input example with processor configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "examples",
+                    "advancedExample"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/services/integration-api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/services/mtm/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c7cc71db-5aed-4877-849b-4733dd107836",
+    "name": "Integration configurations examples API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

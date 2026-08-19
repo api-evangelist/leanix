@@ -1,0 +1,165 @@
+{
+  "item": [
+    {
+      "id": "d5b1f751-4388-44ff-ab28-63fc78929030",
+      "name": "storages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "70918bfe-bc82-49d7-a8c8-b1b9ef96d22d",
+          "name": "create In Azure",
+          "request": {
+            "name": "create In Azure",
+            "description": {
+              "content": "Provides storage resources that can be used for synchronisation runs. It creates a blob file in Azure Storage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storages",
+                "azure"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f2b119c-eae1-4d8b-a30e-255292f139f5",
+              "name": "A new blob file was created and its ready for writing in Azure Blob Storage.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storages",
+                    "azure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"expireAt\": \"2021-04-10T13:08:53.939604Z\",\n  \"SAS\": \"https://folder.blob.core.windows.net/integration-api/Pa840823\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbf782be-4ab9-4e16-a27d-5913bd748ac7",
+              "name": "Internal error during the provisioning of a new blob file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storages",
+                    "azure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/services/integration-api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/services/mtm/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "22c84ba2-2110-451a-8450-1a2af0abe439",
+    "name": "Integration configurations storages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

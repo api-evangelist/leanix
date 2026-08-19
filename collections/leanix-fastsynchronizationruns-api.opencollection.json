@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Integration configurations fastSynchronizationRuns API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fastSynchronizationRuns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createSynchronizationFastRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fastSynchronizationRuns",
+            "params": [
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed"
+              }
+            ]
+          },
+          "docs": "Creates a fast synchronization run."
+        },
+        {
+          "info": {
+            "name": "createSynchronizationFastRunWithConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fastSynchronizationRuns/withConfig",
+            "params": [
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true a dry run without any changes will be performed"
+              }
+            ]
+          },
+          "docs": "Starts a new fast run synchronization using the processor configuration and input object provided in the request.\n>__Please do not use this endpoint for production use cases. It was built for testing configurations only.__"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Integration configurations examples API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "examples",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /examples/starterExample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/examples/starterExample"
+          },
+          "docs": "Returns a starter example including an Input object and processor configuration"
+        },
+        {
+          "info": {
+            "name": "GET /examples/advancedExample",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/examples/advancedExample"
+          },
+          "docs": "Returns an advanced example including an Input object and processor configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

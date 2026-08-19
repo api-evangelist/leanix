@@ -1,0 +1,2882 @@
+{
+  "item": [
+    {
+      "id": "ca8c1167-4364-41c5-bcf3-4b9a2cab0549",
+      "name": "synchronizationRuns",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d97bfec-b5af-4351-aefb-8497cc5a4ab4",
+          "name": "get Synchronization Runs Status List",
+          "request": {
+            "name": "get Synchronization Runs Status List",
+            "description": {
+              "content": "Returns the status of all existing synchronization runs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32aae9ad-7d4d-43ee-bcd2-501f404c81ed",
+              "name": "A list containing current status of all available synchronization runs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"status\": \"SEQUENTIALIZED\",\n    \"description\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"status\": \"IN_PROGRESS\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa2ed3e5-7b51-4a75-8e04-ccc20fe09053",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df29d0a7-783f-4f8b-b861-17313560b10f",
+          "name": "create Synchronization Run",
+          "request": {
+            "name": "create Synchronization Run",
+            "description": {
+              "content": "Creates a synchronization run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "false",
+                  "description": "If true the created run will be enqueued to be started"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorId\": \"<string>\",\n  \"connectorVersion\": \"<string>\",\n  \"processingDirection\": \"<string>\",\n  \"processingMode\": \"partial\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b941e4ec-2c6e-4d98-aa27-aa117e2ba1bd",
+              "name": "Returns the ID of the new synchronization run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"status\": \"SEQUENTIALIZED\",\n    \"description\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"status\": \"IN_PROGRESS\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3955461-81e1-4859-ae8f-3a3805a00074",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ca5f8d0-e80d-45a7-a2f0-1cdaba28677a",
+          "name": "start Synchronization Run",
+          "request": {
+            "name": "start Synchronization Run",
+            "description": {
+              "content": "Starts an existing but not yet started synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0481f3a7-321c-4b23-a497-9e375a44a3b2",
+              "name": "The synchronization run was successfully started and is now in progress",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dd3e6db-c690-4cbc-9cc5-cf3e781bf341",
+              "name": "The synchronization run was already started earlier. It is not possible to start the same synchronization run twice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5c6959a-ae01-48ec-8172-d29e74a09260",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ccd39ebc-422a-4a78-8776-316484129c1c",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3d31e37-7a3c-4c92-83a7-aa222d4c32b5",
+          "name": "get Synchronization Run Progress",
+          "request": {
+            "name": "get Synchronization Run Progress",
+            "description": {
+              "content": "Shows the progress of a synchronization run, it gives updated counters of the run level that is in execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "progress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a205a323-4349-420f-b823-d56e924ddd91",
+              "name": "The synchronization run exists and progress information was searched.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"processedContentCount\": 4872,\n  \"errorCount\": 7731,\n  \"graphQLRequestCount\": 490,\n  \"runLevelIndex\": 2,\n  \"status\": 2236,\n  \"contentsCount\": 5531,\n  \"warningsCount\": 1308,\n  \"itemsInScopeCount\": 5092\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "896d871f-0d06-457f-af4f-0d42fa8cb864",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c48a06d-c058-44cc-9e4d-6ad535908278",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23525ee2-29c9-4083-aa9a-e06f85018612",
+          "name": "stop Synchronization Run",
+          "request": {
+            "name": "stop Synchronization Run",
+            "description": {
+              "content": "Stops a running synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a21f848-cf0f-4164-90dd-b54b30fd0200",
+              "name": "The synchronization run was successfully stopped.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f083f418-ec1e-4fc8-9bd8-6c154897bbf8",
+              "name": "The synchronization is not yet pending or running. It is not possible to stop a synchronization that is not pending or running.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcbfac84-1ed5-41c5-8eaa-5ca423981439",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cafe13db-e950-40f6-8f83-d8ef9aa045e0",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd64b316-3ca3-4519-9057-18a39e3e7e96",
+          "name": "get Synchronization Run Status",
+          "request": {
+            "name": "get Synchronization Run Status",
+            "description": {
+              "content": "Returns the status of an existing synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40e9b458-1a07-453f-ae56-cb719da2d9cc",
+              "name": "Returns the status of an existing synchronization run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"FAILED\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b87a1632-55b2-47dc-a32c-eeb1267e3beb",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ca2f5e0-7b24-4c66-b4dd-a04deab32e16",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"processor\": {\n    \"name\": \"string\",\n    \"index\": 3021\n  },\n  \"content\": \"string\",\n  \"message\": \"string\",\n  \"detail\": \"string\",\n  \"category\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2757da2-1005-4125-b150-849a65410a01",
+          "name": "get Synchronization Run Stats",
+          "request": {
+            "name": "get Synchronization Run Stats",
+            "description": {
+              "content": "Returns detailed statistics about the execution of a synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c55ec69f-7b76-452b-bbc4-b00a3f03f4ac",
+              "name": "Returns an object with multiple entries based on the direction (inbound or outbound) of the synchronization run",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99cfb6a8-ecf9-4f0b-815b-832e446a2831",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c809a02c-3e23-47c5-a2ef-f241b2b0ef17",
+          "name": "get Synchronization Run Results",
+          "request": {
+            "name": "get Synchronization Run Results",
+            "description": {
+              "content": "Returns the results of a finished synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90d43ad7-5d36-405a-988f-088c4d100873",
+              "name": "Returns the results of a finished synchronization run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorVersion\": \"1.2.0\",\n  \"lxVersion\": \"1.0.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\",\n  \"lxWorkspace\": \"string\",\n  \"description\": \"Imports kubernetes data into LeanIX\",\n  \"chunkInformation\": {\n    \"firstDataObject\": 3366,\n    \"lastDataObject\": 9790,\n    \"maxDataObject\": 8233\n  },\n  \"customFields\": {\n    \"key_0\": {}\n  },\n  \"content\": [\n    {\n      \"type\": \"Deployment\",\n      \"id\": \"684c16bf-198c-11f9-9d08-926300573fbf\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    {\n      \"type\": \"Deployment\",\n      \"id\": \"684c16bf-198c-11f9-9d08-926300573fbf\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb30f442-107b-44a1-83d8-c745c6cd890c",
+              "name": "This code is returned, when the inbound run has no LDIF to produce, or when the LDIF is not yet ready.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a43892d-11c7-45f8-90e0-1091b8481ec9",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a19afdbb-4b89-4fb6-87d1-0a99f7ab34de",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fda0cdb-bcfd-44b0-bb2c-b90f5e38d839",
+          "name": "get Synchronization Run Results Url",
+          "request": {
+            "name": "get Synchronization Run Results Url",
+            "description": {
+              "content": "Returns the url to the results of a finished synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "resultsUrl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "794fc2be-ba3c-4bbd-89cd-3c0fbe544c6f",
+              "name": "Returns the url to the results of a finished synchronization run or in case the run exists but is not yet finished a null value for the url.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "resultsUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73a227e6-4d69-497e-b648-3c4bda5757f8",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "resultsUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2eaa87de-c04d-4650-8f9c-18456f7929cd",
+              "name": "No synchronization run with the given id exists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "resultsUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"processor\": {\n    \"name\": \"string\",\n    \"index\": 3021\n  },\n  \"content\": \"string\",\n  \"message\": \"string\",\n  \"detail\": \"string\",\n  \"category\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64c5c2a8-3d9a-4a2f-85de-bfe7c3b075c7",
+          "name": "get Synchronization Run Warnings",
+          "request": {
+            "name": "get Synchronization Run Warnings",
+            "description": {
+              "content": "Returns the warnings of a synchronization run",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                ":id",
+                "warnings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The zero-based index of the first element to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The number of elements that should be retrieved"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the synchronization run"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e78285a-6faa-4b57-b997-319b1f02e1c7",
+              "name": "Returns the warnings of a synchronization run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"processor\": {\n      \"name\": \"string\",\n      \"index\": 801\n    },\n    \"content\": \"string\",\n    \"message\": \"string\",\n    \"detail\": \"string\",\n    \"category\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"processor\": {\n      \"name\": \"string\",\n      \"index\": 5537\n    },\n    \"content\": \"string\",\n    \"message\": \"string\",\n    \"detail\": \"string\",\n    \"category\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7ffcd50-a53a-481d-8d34-ed9337113856",
+              "name": "The parameters offset and limit must satisfy the condition offset MOD limit == 0, or if the synchornisation does not have a SyncLog Id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1059746-5701-4e03-bdd5-43ada628a7cc",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    ":id",
+                    "warnings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the synchronization run"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5cca01f-0cbf-4ebe-90d5-53af7030eb15",
+          "name": "create Synchronization Run With Config",
+          "request": {
+            "name": "create Synchronization Run With Config",
+            "description": {
+              "content": "Starts a new synchronization run using the processor configuration and input object provided in the request.\n>__Please do not use this endpoint for production use cases. It was built for testing configurations only.__",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                "withConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "false",
+                  "description": "If true the created run will be enqueued to be started"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"connectorType\": \"<string>\",\n    \"connectorId\": \"<string>\",\n    \"connectorVersion\": \"<string>\",\n    \"processingDirection\": \"<string>\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"<string>\",\n    \"connectorId\": \"<string>\",\n    \"connectorVersion\": \"<string>\",\n    \"processingDirection\": \"<string>\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0c3679d-b32e-4029-ad92-90e7bff6ec42",
+              "name": "Successful operation, the response contains the ID of the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0964dd0f-36df-49d4-8c18-1a45bc2340b4",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e9c9cd8-711f-4914-8915-bd5ccdc05922",
+          "name": "create Synchronization Run With Url Input",
+          "request": {
+            "name": "create Synchronization Run With Url Input",
+            "description": {
+              "content": "Starts a new synchronization run using a DataProvider information to obtain the LDIF input",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                "withUrlInput"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "false",
+                  "description": "If true the created run will be enqueued to be started"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c56743e-d1f5-4428-880c-9a50c7f309ee",
+              "name": "Successful operation, the response contains the ID of the run and the processor configuration selected for the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withUrlInput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cab74d4c-b5cc-48cc-830c-f8b8ab9b8d16",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withUrlInput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d7c8451-4a89-436d-a307-ed9517c1e31d",
+          "name": "create Synchronization Run With Execution Group And Url Input",
+          "request": {
+            "name": "create Synchronization Run With Execution Group And Url Input",
+            "description": {
+              "content": "Starts a new synchronization run using a DataProvider information to obtain the LDIF input, but choose a configuration based on execution group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                "withExecutionGroupAndUrlInput"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupName",
+                  "value": "<string>",
+                  "description": "The name of execution group"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "false",
+                  "description": "If true the created run will be enqueued to be started"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06706665-8c34-456c-bda6-1b5da08db618",
+              "name": "Successful operation, the response contains the ID of the run and the processor configuration selected for the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroupAndUrlInput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60286903-41fa-4b7d-8cf2-2557686ab4c5",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroupAndUrlInput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "450b0505-e72c-4ffd-ad39-6cb43738900c",
+              "name": "There is no configuration matching with the execution group value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroupAndUrlInput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30e2740c-12bf-4e4c-a745-c9a88dbfae73",
+          "name": "create Synchronization Run With Execution Group",
+          "request": {
+            "name": "create Synchronization Run With Execution Group",
+            "description": {
+              "content": "Starts a new synchronization run using combined processor configuration within an execution group and input object provided in the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "synchronizationRuns",
+                "withExecutionGroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groupName",
+                  "value": "<string>",
+                  "description": "The name of execution group"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "false",
+                  "description": "If true the created run will be enqueued to be started"
+                },
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed. This parameter requires the start parameter to be set to true as well"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorId\": \"<string>\",\n  \"connectorVersion\": \"<string>\",\n  \"processingDirection\": \"<string>\",\n  \"processingMode\": \"partial\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76451aef-e830-4c88-847e-2b237360b4e7",
+              "name": "Successful operation, the response contains the ID of the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33c0c203-7146-48ab-9652-108829f75ab4",
+              "name": "Execution group contains processor configurations that are incompatible (both 'processingDirection' and 'processingMode' must be the same).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef75d3a0-a4da-4c2e-8ff2-f59a710134cb",
+              "name": "No processor configuration is found for the given execution group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "synchronizationRuns",
+                    "withExecutionGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groupName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "false"
+                    },
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/services/integration-api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/services/mtm/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "270e4727-4995-4b01-879b-68add94dad46",
+    "name": "Integration configurations synchronizationRuns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

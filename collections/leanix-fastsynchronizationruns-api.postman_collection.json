@@ -1,0 +1,479 @@
+{
+  "item": [
+    {
+      "id": "74616fed-deb7-45e1-8b39-5bfc1b71ebc6",
+      "name": "fastSynchronizationRuns",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd76e574-eb43-45a3-b9bc-96b417ca27dc",
+          "name": "create Synchronization Fast Run",
+          "request": {
+            "name": "create Synchronization Fast Run",
+            "description": {
+              "content": "Creates a fast synchronization run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fastSynchronizationRuns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorId\": \"<string>\",\n  \"connectorVersion\": \"<string>\",\n  \"processingDirection\": \"<string>\",\n  \"processingMode\": \"partial\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b142d736-f784-4e77-848a-9afe3358e70c",
+              "name": "Results of the execution, it includes error messages and statistics about the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"warnings\": [\n    {\n      \"processor\": {\n        \"name\": \"string\",\n        \"index\": 5325\n      },\n      \"content\": \"string\",\n      \"message\": \"string\",\n      \"detail\": \"string\",\n      \"category\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"processor\": {\n        \"name\": \"string\",\n        \"index\": 8014\n      },\n      \"content\": \"string\",\n      \"message\": \"string\",\n      \"detail\": \"string\",\n      \"category\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"stats\": {\n    \"duration\": \"string\",\n    \"processedContentCount\": 7520,\n    \"processorCount\": 1310\n  },\n  \"results\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7de05d50-28a5-4f5e-a16b-28612492366a",
+              "name": "Fast execution does not support outbound yet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32638c5b-a987-4b71-ba68-972bd94b2a08",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "925c489f-4635-42da-b3f4-3192fd66db88",
+          "name": "create Synchronization Fast Run With Config",
+          "request": {
+            "name": "create Synchronization Fast Run With Config",
+            "description": {
+              "content": "Starts a new fast run synchronization using the processor configuration and input object provided in the request.\n>__Please do not use this endpoint for production use cases. It was built for testing configurations only.__",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fastSynchronizationRuns",
+                "withConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "test",
+                  "value": "false",
+                  "description": "If true a dry run without any changes will be performed"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"connectorType\": \"<string>\",\n    \"connectorId\": \"<string>\",\n    \"connectorVersion\": \"<string>\",\n    \"processingDirection\": \"<string>\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"<string>\",\n    \"connectorId\": \"<string>\",\n    \"connectorVersion\": \"<string>\",\n    \"processingDirection\": \"<string>\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2d92f53-faa9-4fa6-bef3-c5c969e1ce93",
+              "name": "Results of the execution, it includes error messages and statistics about the run.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns",
+                    "withConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"warnings\": [\n    {\n      \"processor\": {\n        \"name\": \"string\",\n        \"index\": 9818\n      },\n      \"content\": \"string\",\n      \"message\": \"string\",\n      \"detail\": \"string\",\n      \"category\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"processor\": {\n        \"name\": \"string\",\n        \"index\": 6514\n      },\n      \"content\": \"string\",\n      \"message\": \"string\",\n      \"detail\": \"string\",\n      \"category\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"stats\": {\n    \"duration\": \"string\",\n    \"processedContentCount\": 2411,\n    \"processorCount\": 9494\n  },\n  \"results\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c73119a-1dc6-4348-ae0f-8f5583731f1c",
+              "name": "Fast execution does not support outbound yet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns",
+                    "withConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adc4779b-6a1a-438d-a24b-6e1cb30920de",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fastSynchronizationRuns",
+                    "withConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "test",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\"\n  },\n  \"processorConfiguration\": {\n    \"connectorType\": \"lxKubernetes\",\n    \"connectorId\": \"Kub Dev-001\",\n    \"connectorVersion\": \"1.2.0\",\n    \"processingDirection\": \"inbound\",\n    \"processingMode\": \"partial\",\n    \"sequentialExecution\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/services/integration-api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/services/mtm/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "caad7208-077e-429d-8857-ac6f21eee469",
+    "name": "Integration configurations fastSynchronizationRuns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

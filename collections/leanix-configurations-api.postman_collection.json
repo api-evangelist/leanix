@@ -1,0 +1,733 @@
+{
+  "item": [
+    {
+      "id": "69bf0bf4-eef1-45c9-9c39-64c687193ebb",
+      "name": "configurations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe866c62-71e0-43e1-af9b-bfb8efcb5281",
+          "name": "get Processor Configurations",
+          "request": {
+            "name": "get Processor Configurations",
+            "description": {
+              "content": "Returns a list of available processor configurations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "connectorType",
+                  "value": "<string>",
+                  "description": "The type of connector that is used"
+                },
+                {
+                  "disabled": false,
+                  "key": "connectorId",
+                  "value": "<string>",
+                  "description": "The identifier of the connector instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "connectorVersion",
+                  "value": "<string>",
+                  "description": "The version of the connector that is expected to process this LDIF file"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingDirection",
+                  "value": "<string>",
+                  "description": "The data flow direction, could be [inbound, outbound]"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingMode",
+                  "value": "<string>",
+                  "description": "The processing mode, could be [partial, full]"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "193f4606-0344-4314-bb9b-dfc765cb6518",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\",\n  \"sequentialExecution\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "685d1766-cf84-48e5-8767-112c6dd94d59",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1d03074-a674-44a0-bca0-e1ee9da7f47d",
+          "name": "upsert Processor Configuration",
+          "request": {
+            "name": "upsert Processor Configuration",
+            "description": {
+              "content": "Inserts a new processor configuration or updates an existing one",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorId\": \"<string>\",\n  \"connectorVersion\": \"<string>\",\n  \"processingDirection\": \"<string>\",\n  \"processingMode\": \"partial\",\n  \"sequentialExecution\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "922f18f0-6482-4257-ad32-e489defee585",
+              "name": "Upsert successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\",\n  \"sequentialExecution\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8bf21bf3-9c88-486a-a0de-81f97ac58238",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"lxKubernetes\",\n  \"connectorId\": \"Kub Dev-001\",\n  \"connectorVersion\": \"1.2.0\",\n  \"processingDirection\": \"inbound\",\n  \"processingMode\": \"partial\",\n  \"sequentialExecution\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0de1d8b7-4c53-46d1-b9c4-19c31f763994",
+          "name": "delete Processor Configuration",
+          "request": {
+            "name": "delete Processor Configuration",
+            "description": {
+              "content": "Delete a single processor configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "connectorType",
+                  "value": "<string>",
+                  "description": "The type of connector that is used"
+                },
+                {
+                  "disabled": false,
+                  "key": "connectorId",
+                  "value": "<string>",
+                  "description": "The identifier of the connector instance"
+                },
+                {
+                  "disabled": false,
+                  "key": "connectorVersion",
+                  "value": "<string>",
+                  "description": "The version of the connector that is expected to process this LDIF file"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingDirection",
+                  "value": "<string>",
+                  "description": "The data flow direction, could be [inbound, outbound]"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingMode",
+                  "value": "<string>",
+                  "description": "The processing mode, could be [partial, full]"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "002e038e-a490-46e3-b897-e49f42c11ac9",
+              "name": "Not all necessary fields are set in parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b572acd8-48ec-4ea7-b761-2e311fe63826",
+              "name": "The user is not allowed to use this endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce43c2fe-c6f8-48d8-8b18-44a0602021e9",
+              "name": "No such processor configuration found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dbf8c6b-4a74-4d4c-aa7c-4efbef0c1b1a",
+              "name": "Could not process the given processor configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ef179c3-763b-4c26-87c6-347455d18e43",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectorType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "connectorVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "processingMode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/services/integration-api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "/services/mtm/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "676d86ea-caae-457f-9b77-43a67000a3a3",
+    "name": "Integration configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

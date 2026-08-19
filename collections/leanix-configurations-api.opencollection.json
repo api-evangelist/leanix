@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Integration configurations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getProcessorConfigurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/configurations",
+            "params": [
+              {
+                "name": "connectorType",
+                "value": "",
+                "type": "query",
+                "description": "The type of connector that is used"
+              },
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the connector instance"
+              },
+              {
+                "name": "connectorVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the connector that is expected to process this LDIF file"
+              },
+              {
+                "name": "processingDirection",
+                "value": "",
+                "type": "query",
+                "description": "The data flow direction, could be [inbound, outbound]"
+              },
+              {
+                "name": "processingMode",
+                "value": "",
+                "type": "query",
+                "description": "The processing mode, could be [partial, full]"
+              }
+            ]
+          },
+          "docs": "Returns a list of available processor configurations"
+        },
+        {
+          "info": {
+            "name": "upsertProcessorConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/configurations"
+          },
+          "docs": "Inserts a new processor configuration or updates an existing one"
+        },
+        {
+          "info": {
+            "name": "deleteProcessorConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/configurations",
+            "params": [
+              {
+                "name": "connectorType",
+                "value": "",
+                "type": "query",
+                "description": "The type of connector that is used"
+              },
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the connector instance"
+              },
+              {
+                "name": "connectorVersion",
+                "value": "",
+                "type": "query",
+                "description": "The version of the connector that is expected to process this LDIF file"
+              },
+              {
+                "name": "processingDirection",
+                "value": "",
+                "type": "query",
+                "description": "The data flow direction, could be [inbound, outbound]"
+              },
+              {
+                "name": "processingMode",
+                "value": "",
+                "type": "query",
+                "description": "The processing mode, could be [partial, full]"
+              }
+            ]
+          },
+          "docs": "Delete a single processor configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
