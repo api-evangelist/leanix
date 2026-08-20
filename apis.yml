@@ -37,6 +37,8 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
+  - Configurations
+  tags_raw:
   - configurations
   properties:
   - type: OpenAPI
@@ -49,6 +51,8 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
+  - Examples
+  tags_raw:
   - examples
   properties:
   - type: OpenAPI
@@ -61,7 +65,8 @@ apis:
     The fastSynchronizationRuns API from LeanIX — 2 operation(s) for fastsynchronizationruns.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
-  tags:
+  tags: []
+  tags_raw:
   - fastSynchronizationRuns
   properties:
   - type: OpenAPI
@@ -74,6 +79,8 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
+  - Storages
+  tags_raw:
   - storages
   properties:
   - type: OpenAPI
@@ -85,7 +92,8 @@ apis:
   description: The synchronizationRuns API from LeanIX — 13 operation(s) for synchronizationruns.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
-  tags:
+  tags: []
+  tags_raw:
   - synchronizationRuns
   properties:
   - type: OpenAPI
