@@ -48,7 +48,7 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
-  - configurations
+  - Configurations
   tags_raw:
   - configurations
   properties:
@@ -62,7 +62,7 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
-  - examples
+  - Examples
   tags_raw:
   - examples
   properties:
@@ -90,7 +90,7 @@ apis:
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
   tags:
-  - storages
+  - Storages
   tags_raw:
   - storages
   properties:
