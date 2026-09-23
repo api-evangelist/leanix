@@ -1,11 +1,7 @@
 {
   "provider": "leanix",
   "sources": [
-    "leanix-configurations-api-openapi.yml",
-    "leanix-examples-api-openapi.yml",
-    "leanix-fastsynchronizationruns-api-openapi.yml",
-    "leanix-storages-api-openapi.yml",
-    "leanix-synchronizationruns-api-openapi.yml"
+    "_original/leanix-openapi.json"
   ],
   "outputs": [
     "leanix-configurations-api-openapi.yml",
@@ -17,6 +13,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "leanix-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "leanix-openapi.json: declared missing tag: fastSynchronizationRuns",
+    "leanix-openapi.json: declared missing tag: storages",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "leanix-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leanix-examples-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leanix-fastsynchronizationruns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leanix-storages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "leanix-synchronizationruns-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
