@@ -43,7 +43,7 @@ modified: '2026-05-19'
 specificationVersion: '0.23'
 apis:
 - aid: leanix:leanix-configurations-api
-  name: LeanIX configurations API
+  name: LeanIX Configurations API
   description: The configurations API from LeanIX — 1 operation(s) for configurations.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
@@ -57,7 +57,7 @@ apis:
   - type: Documentation
     url: https://help.sap.com/docs/leanix/ea
 - aid: leanix:leanix-examples-api
-  name: LeanIX examples API
+  name: LeanIX Examples API
   description: The examples API from LeanIX — 2 operation(s) for examples.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
@@ -71,7 +71,7 @@ apis:
   - type: Documentation
     url: https://help.sap.com/docs/leanix/ea
 - aid: leanix:leanix-fastsynchronizationruns-api
-  name: LeanIX fastSynchronizationRuns API
+  name: LeanIX Fast Synchronization Runs API
   description: >-
     The fastSynchronizationRuns API from LeanIX — 2 operation(s) for fastsynchronizationruns.
   humanURL: https://help.sap.com/docs/leanix/ea
@@ -85,7 +85,7 @@ apis:
   - type: Documentation
     url: https://help.sap.com/docs/leanix/ea
 - aid: leanix:leanix-storages-api
-  name: LeanIX storages API
+  name: LeanIX Storages API
   description: The storages API from LeanIX — 1 operation(s) for storages.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1
@@ -99,7 +99,7 @@ apis:
   - type: Documentation
     url: https://help.sap.com/docs/leanix/ea
 - aid: leanix:leanix-synchronizationruns-api
-  name: LeanIX synchronizationRuns API
+  name: LeanIX Synchronization Runs API
   description: The synchronizationRuns API from LeanIX — 13 operation(s) for synchronizationruns.
   humanURL: https://help.sap.com/docs/leanix/ea
   baseURL: https://app.leanix.net/services/integration-api/v1

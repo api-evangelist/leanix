@@ -75,6 +75,48 @@ paths:
       summary: Delete processor configuration
       x-summary-source: derived
 components:
+  parameters:
+    connectorId:
+      name: connectorId
+      description: The identifier of the connector instance
+      in: query
+      required: false
+      schema:
+        type: string
+    connectorVersion:
+      name: connectorVersion
+      description: The version of the connector that is expected to process this LDIF file
+      in: query
+      required: false
+      schema:
+        type: string
+    connectorType:
+      name: connectorType
+      description: The type of connector that is used
+      in: query
+      required: false
+      schema:
+        type: string
+    processingMode:
+      name: processingMode
+      description: The processing mode, could be [partial, full]
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - partial
+        - full
+    processingDirection:
+      name: processingDirection
+      description: The data flow direction, could be [inbound, outbound]
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+        - inbound
+        - outbound
   schemas:
     ProcessorConfiguration:
       type: object
@@ -113,48 +155,6 @@ components:
           description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
           type: boolean
           default: false
-  parameters:
-    connectorVersion:
-      name: connectorVersion
-      description: The version of the connector that is expected to process this LDIF file
-      in: query
-      required: false
-      schema:
-        type: string
-    processingDirection:
-      name: processingDirection
-      description: The data flow direction, could be [inbound, outbound]
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - inbound
-        - outbound
-    connectorId:
-      name: connectorId
-      description: The identifier of the connector instance
-      in: query
-      required: false
-      schema:
-        type: string
-    processingMode:
-      name: processingMode
-      description: The processing mode, could be [partial, full]
-      in: query
-      required: false
-      schema:
-        type: string
-        enum:
-        - partial
-        - full
-    connectorType:
-      name: connectorType
-      description: The type of connector that is used
-      in: query
-      required: false
-      schema:
-        type: string
   securitySchemes:
     token:
       type: oauth2
