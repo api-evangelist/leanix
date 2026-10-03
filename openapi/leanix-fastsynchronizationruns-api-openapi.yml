@@ -65,76 +65,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Input:
-      type: object
-      discriminator:
-        propertyName: processingDirection
-      required:
-      - connectorType
-      - connectorId
-      - connectorVersion
-      - processingDirection
-      properties:
-        connectorType:
-          description: The type of connector that is used
-          example: lxKubernetes
-          type: string
-        connectorId:
-          description: The identifier of the connector instance
-          example: Kub Dev-001
-          type: string
-        connectorVersion:
-          description: The version of the connector that is expected to process this LDIF file
-          example: 1.2.0
-          type: string
-        processingDirection:
-          description: The data flow direction, could be [inbound, outbound]
-          type: string
-          example: inbound
-        processingMode:
-          description: The processing mode, could be [partial, full]
-          type: string
-          default: partial
-          enum:
-          - partial
-          - full
-    FastRunResponse:
-      type: object
-      properties:
-        status:
-          description: The status result of the run, like FINISHED, FAILED.
-          readOnly: true
-          type: string
-        warnings:
-          description: A list of error/warnings messages found during the execution.
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Warning'
-        stats:
-          description: Statistics about the execution of the run.
-          readOnly: true
-          type: object
-          $ref: '#/components/schemas/FastRunStatsReport'
-        results:
-          description: Output ldif when writeToLdif processor is used.
-          readOnly: true
-          type: object
-    FastRunStatsReport:
-      type: object
-      properties:
-        duration:
-          description: The duration of the execution expressed in ISO-8601 format PnDTnHnMn
-          readOnly: true
-          type: string
-        processedContentCount:
-          description: The number of elements processed as given by the LDIF input content
-          readOnly: true
-          type: integer
-        processorCount:
-          description: The number or processors that were part of the execution
-          readOnly: true
-          type: integer
     Processor:
       type: object
       properties:
@@ -160,34 +90,43 @@ components:
           description: The processors and variables that are required to process the input
           readOnly: true
           $ref: '#/components/schemas/ProcessorConfiguration'
-    Warning:
+    FastRunStatsReport:
       type: object
       properties:
-        processor:
-          description: The error message
+        duration:
+          description: The duration of the execution expressed in ISO-8601 format PnDTnHnMn
+          readOnly: true
+          type: string
+        processedContentCount:
+          description: The number of elements processed as given by the LDIF input content
+          readOnly: true
+          type: integer
+        processorCount:
+          description: The number or processors that were part of the execution
+          readOnly: true
+          type: integer
+    FastRunResponse:
+      type: object
+      properties:
+        status:
+          description: The status result of the run, like FINISHED, FAILED.
+          readOnly: true
+          type: string
+        warnings:
+          description: A list of error/warnings messages found during the execution.
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Warning'
+        stats:
+          description: Statistics about the execution of the run.
           readOnly: true
           type: object
-          $ref: '#/components/schemas/Processor'
-        content:
-          description: The content ID element from the LDIF that was processed when this warning was generated.
+          $ref: '#/components/schemas/FastRunStatsReport'
+        results:
+          description: Output ldif when writeToLdif processor is used.
           readOnly: true
-          type: string
-        message:
-          description: The error message
-          readOnly: true
-          type: string
-        detail:
-          description: Additional information to complement the error message
-          readOnly: true
-          type: string
-        category:
-          description: An internal category that identifies of processing category where the warning was originated.
-          readOnly: true
-          type: string
-        status:
-          description: An identifier of the type of alert. Possible values are WARNING, ERROR
-          readOnly: true
-          type: string
+          type: object
     ProcessorConfiguration:
       type: object
       discriminator:
@@ -225,6 +164,67 @@ components:
           description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
           type: boolean
           default: false
+    Input:
+      type: object
+      discriminator:
+        propertyName: processingDirection
+      required:
+      - connectorType
+      - connectorId
+      - connectorVersion
+      - processingDirection
+      properties:
+        connectorType:
+          description: The type of connector that is used
+          example: lxKubernetes
+          type: string
+        connectorId:
+          description: The identifier of the connector instance
+          example: Kub Dev-001
+          type: string
+        connectorVersion:
+          description: The version of the connector that is expected to process this LDIF file
+          example: 1.2.0
+          type: string
+        processingDirection:
+          description: The data flow direction, could be [inbound, outbound]
+          type: string
+          example: inbound
+        processingMode:
+          description: The processing mode, could be [partial, full]
+          type: string
+          default: partial
+          enum:
+          - partial
+          - full
+    Warning:
+      type: object
+      properties:
+        processor:
+          description: The error message
+          readOnly: true
+          type: object
+          $ref: '#/components/schemas/Processor'
+        content:
+          description: The content ID element from the LDIF that was processed when this warning was generated.
+          readOnly: true
+          type: string
+        message:
+          description: The error message
+          readOnly: true
+          type: string
+        detail:
+          description: Additional information to complement the error message
+          readOnly: true
+          type: string
+        category:
+          description: An internal category that identifies of processing category where the warning was originated.
+          readOnly: true
+          type: string
+        status:
+          description: An identifier of the type of alert. Possible values are WARNING, ERROR
+          readOnly: true
+          type: string
   parameters:
     test:
       name: test

@@ -76,23 +76,9 @@ paths:
       x-summary-source: derived
 components:
   parameters:
-    connectorId:
-      name: connectorId
-      description: The identifier of the connector instance
-      in: query
-      required: false
-      schema:
-        type: string
     connectorVersion:
       name: connectorVersion
       description: The version of the connector that is expected to process this LDIF file
-      in: query
-      required: false
-      schema:
-        type: string
-    connectorType:
-      name: connectorType
-      description: The type of connector that is used
       in: query
       required: false
       schema:
@@ -117,6 +103,20 @@ components:
         enum:
         - inbound
         - outbound
+    connectorType:
+      name: connectorType
+      description: The type of connector that is used
+      in: query
+      required: false
+      schema:
+        type: string
+    connectorId:
+      name: connectorId
+      description: The identifier of the connector instance
+      in: query
+      required: false
+      schema:
+        type: string
   schemas:
     ProcessorConfiguration:
       type: object
