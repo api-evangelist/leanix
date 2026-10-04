@@ -65,68 +65,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Processor:
+    Warning:
       type: object
       properties:
-        name:
-          description: The name of the processor as defined by the processor configuration
+        processor:
+          description: The error message
+          readOnly: true
+          type: object
+          $ref: '#/components/schemas/Processor'
+        content:
+          description: The content ID element from the LDIF that was processed when this warning was generated.
           readOnly: true
           type: string
-        index:
-          description: An internal integer value used to identify the processor
-          readOnly: true
-          type: integer
-    InputWithProcessorConfig:
-      type: object
-      required:
-      - input
-      - processorConfiguration
-      properties:
-        input:
-          description: The input that is processed
-          readOnly: true
-          $ref: '#/components/schemas/Input'
-        processorConfiguration:
-          description: The processors and variables that are required to process the input
-          readOnly: true
-          $ref: '#/components/schemas/ProcessorConfiguration'
-    FastRunStatsReport:
-      type: object
-      properties:
-        duration:
-          description: The duration of the execution expressed in ISO-8601 format PnDTnHnMn
+        message:
+          description: The error message
           readOnly: true
           type: string
-        processedContentCount:
-          description: The number of elements processed as given by the LDIF input content
+        detail:
+          description: Additional information to complement the error message
           readOnly: true
-          type: integer
-        processorCount:
-          description: The number or processors that were part of the execution
+          type: string
+        category:
+          description: An internal category that identifies of processing category where the warning was originated.
           readOnly: true
-          type: integer
-    FastRunResponse:
-      type: object
-      properties:
+          type: string
         status:
-          description: The status result of the run, like FINISHED, FAILED.
+          description: An identifier of the type of alert. Possible values are WARNING, ERROR
           readOnly: true
           type: string
-        warnings:
-          description: A list of error/warnings messages found during the execution.
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Warning'
-        stats:
-          description: Statistics about the execution of the run.
-          readOnly: true
-          type: object
-          $ref: '#/components/schemas/FastRunStatsReport'
-        results:
-          description: Output ldif when writeToLdif processor is used.
-          readOnly: true
-          type: object
     ProcessorConfiguration:
       type: object
       discriminator:
@@ -197,34 +163,68 @@ components:
           enum:
           - partial
           - full
-    Warning:
+    Processor:
       type: object
       properties:
-        processor:
-          description: The error message
+        name:
+          description: The name of the processor as defined by the processor configuration
+          readOnly: true
+          type: string
+        index:
+          description: An internal integer value used to identify the processor
+          readOnly: true
+          type: integer
+    FastRunStatsReport:
+      type: object
+      properties:
+        duration:
+          description: The duration of the execution expressed in ISO-8601 format PnDTnHnMn
+          readOnly: true
+          type: string
+        processedContentCount:
+          description: The number of elements processed as given by the LDIF input content
+          readOnly: true
+          type: integer
+        processorCount:
+          description: The number or processors that were part of the execution
+          readOnly: true
+          type: integer
+    InputWithProcessorConfig:
+      type: object
+      required:
+      - input
+      - processorConfiguration
+      properties:
+        input:
+          description: The input that is processed
+          readOnly: true
+          $ref: '#/components/schemas/Input'
+        processorConfiguration:
+          description: The processors and variables that are required to process the input
+          readOnly: true
+          $ref: '#/components/schemas/ProcessorConfiguration'
+    FastRunResponse:
+      type: object
+      properties:
+        status:
+          description: The status result of the run, like FINISHED, FAILED.
+          readOnly: true
+          type: string
+        warnings:
+          description: A list of error/warnings messages found during the execution.
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Warning'
+        stats:
+          description: Statistics about the execution of the run.
           readOnly: true
           type: object
-          $ref: '#/components/schemas/Processor'
-        content:
-          description: The content ID element from the LDIF that was processed when this warning was generated.
+          $ref: '#/components/schemas/FastRunStatsReport'
+        results:
+          description: Output ldif when writeToLdif processor is used.
           readOnly: true
-          type: string
-        message:
-          description: The error message
-          readOnly: true
-          type: string
-        detail:
-          description: Additional information to complement the error message
-          readOnly: true
-          type: string
-        category:
-          description: An internal category that identifies of processing category where the warning was originated.
-          readOnly: true
-          type: string
-        status:
-          description: An identifier of the type of alert. Possible values are WARNING, ERROR
-          readOnly: true
-          type: string
+          type: object
   parameters:
     test:
       name: test

@@ -83,16 +83,13 @@ components:
       required: false
       schema:
         type: string
-    processingMode:
-      name: processingMode
-      description: The processing mode, could be [partial, full]
+    connectorType:
+      name: connectorType
+      description: The type of connector that is used
       in: query
       required: false
       schema:
         type: string
-        enum:
-        - partial
-        - full
     processingDirection:
       name: processingDirection
       description: The data flow direction, could be [inbound, outbound]
@@ -103,13 +100,16 @@ components:
         enum:
         - inbound
         - outbound
-    connectorType:
-      name: connectorType
-      description: The type of connector that is used
+    processingMode:
+      name: processingMode
+      description: The processing mode, could be [partial, full]
       in: query
       required: false
       schema:
         type: string
+        enum:
+        - partial
+        - full
     connectorId:
       name: connectorId
       description: The identifier of the connector instance

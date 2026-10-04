@@ -43,53 +43,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    InputWithProcessorConfig:
-      type: object
-      required:
-      - input
-      - processorConfiguration
-      properties:
-        input:
-          description: The input that is processed
-          readOnly: true
-          $ref: '#/components/schemas/Input'
-        processorConfiguration:
-          description: The processors and variables that are required to process the input
-          readOnly: true
-          $ref: '#/components/schemas/ProcessorConfiguration'
-    Input:
-      type: object
-      discriminator:
-        propertyName: processingDirection
-      required:
-      - connectorType
-      - connectorId
-      - connectorVersion
-      - processingDirection
-      properties:
-        connectorType:
-          description: The type of connector that is used
-          example: lxKubernetes
-          type: string
-        connectorId:
-          description: The identifier of the connector instance
-          example: Kub Dev-001
-          type: string
-        connectorVersion:
-          description: The version of the connector that is expected to process this LDIF file
-          example: 1.2.0
-          type: string
-        processingDirection:
-          description: The data flow direction, could be [inbound, outbound]
-          type: string
-          example: inbound
-        processingMode:
-          description: The processing mode, could be [partial, full]
-          type: string
-          default: partial
-          enum:
-          - partial
-          - full
     ProcessorConfiguration:
       type: object
       discriminator:
@@ -127,6 +80,53 @@ components:
           description: When set to true, all synchronizations runs processed by this processor configuration will be executed sequentially instead of in parallel.
           type: boolean
           default: false
+    Input:
+      type: object
+      discriminator:
+        propertyName: processingDirection
+      required:
+      - connectorType
+      - connectorId
+      - connectorVersion
+      - processingDirection
+      properties:
+        connectorType:
+          description: The type of connector that is used
+          example: lxKubernetes
+          type: string
+        connectorId:
+          description: The identifier of the connector instance
+          example: Kub Dev-001
+          type: string
+        connectorVersion:
+          description: The version of the connector that is expected to process this LDIF file
+          example: 1.2.0
+          type: string
+        processingDirection:
+          description: The data flow direction, could be [inbound, outbound]
+          type: string
+          example: inbound
+        processingMode:
+          description: The processing mode, could be [partial, full]
+          type: string
+          default: partial
+          enum:
+          - partial
+          - full
+    InputWithProcessorConfig:
+      type: object
+      required:
+      - input
+      - processorConfiguration
+      properties:
+        input:
+          description: The input that is processed
+          readOnly: true
+          $ref: '#/components/schemas/Input'
+        processorConfiguration:
+          description: The processors and variables that are required to process the input
+          readOnly: true
+          $ref: '#/components/schemas/ProcessorConfiguration'
   securitySchemes:
     token:
       type: oauth2
