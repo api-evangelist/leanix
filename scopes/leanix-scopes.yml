@@ -1,17 +1,34 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/leanix-openapi.json
-docs: https://help.sap.com/docs/leanix/ea/authentication-to-sap-leanix-services
-note: >-
-  SAP LeanIX OAuth 2.0 does not use published scopes; the client_credentials
-  token response returns an empty scope value and access is governed by the
-  permission role (Admin, Member, Viewer) of the technical user or API token
-  encoded in the JWT
-  (https://help.sap.com/docs/leanix/ea/authentication-to-sap-leanix-services).
+generated: '2026-10-14'
+method: none
+source: openapi/leanix-configurations-api-openapi.yml, openapi/leanix-examples-api-openapi.yml,
+  openapi/leanix-fastsynchronizationruns-api-openapi.yml, openapi/leanix-storages-api-openapi.yml,
+  openapi/leanix-synchronizationruns-api-openapi.yml
 schemes:
 - name: token
-  source: openapi/leanix-openapi.json
+  source: openapi/leanix-configurations-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+- name: token
+  source: openapi/leanix-examples-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+- name: token
+  source: openapi/leanix-fastsynchronizationruns-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+- name: token
+  source: openapi/leanix-storages-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /services/mtm/v1/oauth2/token
+- name: token
+  source: openapi/leanix-synchronizationruns-api-openapi.yml
   flows:
   - flow: clientCredentials
     tokenUrl: /services/mtm/v1/oauth2/token
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
