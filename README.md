@@ -1,4 +1,4 @@
-# LeanIX (leanix)
+# LeanIX
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,55 +66,131 @@
 
 LeanIX (now SAP LeanIX) is an enterprise architecture and SaaS management platform providing IT portfolio management, application portfolio rationalization, SaaS discovery, and technology risk management. The platform exposes REST APIs for integrating with the fact sheet inventory, running inbound and outbound synchronizations, and managing workspace data.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/apis.yml)
+**Areas:** Enterprise Architecture · SaaS Management · IT Portfolio Management · Application Portfolio · Technology Risk
 
-## Scope
+## LeanIX on APIs.io
 
-- **Type:** Index
+Everything profiled for LeanIX is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/leanix/](https://apis.io/providers/leanix/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Enterprise Architecture
-- SaaS Management
-- IT Portfolio Management
-- Application Portfolio
-- Technology Risk
+- [LeanIX Configurations API](https://apis.io/apis/leanix/leanix-configurations-api/) — The configurations API from LeanIX — 1 operation(s) for configurations.
+- [LeanIX Examples API](https://apis.io/apis/leanix/leanix-examples-api/) — The examples API from LeanIX — 2 operation(s) for examples.
+- [LeanIX Fast Synchronization Runs API](https://apis.io/apis/leanix/leanix-fastsynchronizationruns-api/) — The fastSynchronizationRuns API from LeanIX — 2 operation(s) for fastsynchronizationruns.
+- [LeanIX Storages API](https://apis.io/apis/leanix/leanix-storages-api/) — The storages API from LeanIX — 1 operation(s) for storages.
+- [LeanIX Synchronization Runs API](https://apis.io/apis/leanix/leanix-synchronizationruns-api/) — The synchronizationRuns API from LeanIX — 13 operation(s) for synchronizationruns.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### LeanIX Integration API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The LeanIX Integration API exposes a generic interface for inbound and outbound data synchronization with the LeanIX workspace. It supports processor configurations, starter and advanced examples, and managing synchronization runs that move fact sheet data in and out of LeanIX.
+- [Leanix Agentic Access](https://apis.io/agentic-access/leanix/leanix-agentic-access/)
 
-- **Human URL:** [https://help.sap.com/docs/leanix/ea](https://help.sap.com/docs/leanix/ea)
-- **Base URL:** `https://app.leanix.net/services/integration-api/v1`
+#### Collections (6)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Integration
-- Synchronization
-- Enterprise Architecture
+- [Integration API](https://apis.io/collections/leanix/open-leanix/)
+- [Integration configurations API](https://apis.io/collections/leanix/open-leanix-configurations-api/)
+- [Integration configurations examples API](https://apis.io/collections/leanix/open-leanix-examples-api/)
+- [Integration configurations fastSynchronizationRuns API](https://apis.io/collections/leanix/open-leanix-fastsynchronizationruns-api/)
+- [Integration configurations storages API](https://apis.io/collections/leanix/open-leanix-storages-api/)
+- [Integration configurations synchronizationRuns API](https://apis.io/collections/leanix/open-leanix-synchronizationruns-api/)
 
-#### Properties
+#### Security (3)
 
-- [Documentation](https://help.sap.com/docs/leanix/ea)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/leanix/refs/heads/main/openapi/leanix-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/leanix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/leanix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Leanix Authentication](https://apis.io/security/leanix/leanix-authentication/)
+- [Leanix Domain Security](https://apis.io/security/leanix/leanix-domain-security/)
+- [Leanix Vulnerability Disclosure](https://apis.io/security/leanix/leanix-vulnerability-disclosure/)
 
-- [LinkedIn](https://www.linkedin.com/company/leanix)
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Leanix Scopes](https://apis.io/scopes/leanix/leanix-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Leanix Plans Pricing](https://apis.io/plans/leanix/leanix-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Leanix Rate Limits](https://apis.io/rate-limits/leanix/leanix-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Leanix Finops](https://apis.io/finops/leanix/leanix-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.leanix.net)
 - [Documentation](https://help.sap.com/docs/leanix/ea)
-- [GitHub Organization](https://github.com/leanix)
+- [Blog](https://www.leanix.net/en/blog)
+- [GitHub](https://github.com/leanix)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 40.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 29.0** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/leanix/](https://apis.io/providers/leanix/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LeanIX: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/leanix/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
